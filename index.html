@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Gerenciador de Projetos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Gerenciador de Projetos</h1>
+</header>
+
+<main class="board">
+
+  <section class="column">
+    <h2>A fazer</h2>
+    <div class="task-list" id="todo"></div>
+    <div class="task-creator">
+      <input type="text" class="new-task-input" placeholder="Nova tarefa...">
+      <button class="add-task-btn">Adicionar</button>
+    </div>
+  </section>
+
+  <section class="column">
+    <h2>Em Progresso</h2>
+    <div class="task-list" id="in-progress"></div>
+    <div class="task-creator">
+      <input type="text" class="new-task-input" placeholder="Nova tarefa...">
+      <button class="add-task-btn">Adicionar</button>
+    </div>
+  </section>
+
+  <section class="column">
+    <h2>Concluído</h2>
+    <div class="task-list" id="done"></div>
+    <div class="task-creator">
+      <input type="text" class="new-task-input" placeholder="Nova tarefa...">
+      <button class="add-task-btn">Adicionar</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
