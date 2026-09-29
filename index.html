@@ -1,48 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="is-loading">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Gerenciador de Projetos</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Fluxo — gerenciador de tarefas e projetos no estilo Kanban.">
+  <title>Fluxo · Gerenciador de Tarefas</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232563eb'/%3E%3Cpath d='M8 7v7M12 7v4M16 7v9' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/board.css">
+  <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/modal.css">
+
+  <!-- Aplica o tema salvo antes da primeira pintura (evita "piscar" claro/escuro). -->
+  <script>
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('fluxo:state') || '{}');
+        var theme = (saved.settings && saved.settings.theme) || 'system';
+        if (theme === 'system') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#view">Pular para o conteúdo</a>
 
-<header>
-  <h1>Gerenciador de Projetos</h1>
-</header>
+  <div class="app" id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Menu principal"></aside>
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-<main class="board">
-
-  <section class="column">
-    <h2>A fazer</h2>
-    <div class="task-list" id="todo"></div>
-    <div class="task-creator">
-      <input type="text" class="new-task-input" placeholder="Nova tarefa...">
-      <button class="add-task-btn">Adicionar</button>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="view" id="view" tabindex="-1"></main>
     </div>
-  </section>
+  </div>
 
-  <section class="column">
-    <h2>Em Progresso</h2>
-    <div class="task-list" id="in-progress"></div>
-    <div class="task-creator">
-      <input type="text" class="new-task-input" placeholder="Nova tarefa...">
-      <button class="add-task-btn">Adicionar</button>
-    </div>
-  </section>
+  <div id="modal-root"></div>
+  <div class="toast-root" id="toast-root" aria-live="polite"></div>
 
-  <section class="column">
-    <h2>Concluído</h2>
-    <div class="task-list" id="done"></div>
-    <div class="task-creator">
-      <input type="text" class="new-task-input" placeholder="Nova tarefa...">
-      <button class="add-task-btn">Adicionar</button>
-    </div>
-  </section>
+  <noscript>
+    <p class="noscript">Este aplicativo precisa de JavaScript habilitado para funcionar.</p>
+  </noscript>
 
-</main>
+  <!-- Núcleo -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/domain.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/store.js"></script>
 
-<script src="script.js"></script>
+  <!-- Componentes de interface -->
+  <script src="js/ui/icons.js"></script>
+  <script src="js/ui/components.js"></script>
+  <script src="js/ui/toast.js"></script>
+  <script src="js/ui/modal.js"></script>
+  <script src="js/ui/popover.js"></script>
+  <script src="js/ui/dialogs.js"></script>
+
+  <!-- Telas -->
+  <script src="js/views/filters.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/views/sidebar.js"></script>
+  <script src="js/views/topbar.js"></script>
+  <script src="js/views/board.js"></script>
+  <script src="js/views/list.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/task-modal.js"></script>
+  <script src="js/views/board-settings.js"></script>
+  <script src="js/views/settings.js"></script>
+
+  <!-- Inicialização -->
+  <script src="js/shortcuts.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
