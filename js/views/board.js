@@ -518,12 +518,35 @@
     if (card) App.taskModal.open(card.dataset.taskId);
   }
 
+  /** Menu de contexto (clique direito) com as ações rápidas do cartão. */
+  function openCardMenu(anchor, taskId) {
+    const board = App.store.getActiveBoard();
+    const task = board && board.tasks[taskId];
+    if (!task) return;
+    const done = domain.isTaskDone(task, board);
+
+    App.popover.menu(anchor, [
+      { label: 'Abrir', icon: 'edit', onClick: () => App.taskModal.open(taskId) },
+      { label: done ? 'Reabrir tarefa' : 'Marcar como concluída', icon: done ? 'restore' : 'success', onClick: () => App.actions.toggleTaskDone(taskId) },
+      { label: 'Duplicar', icon: 'copy', onClick: () => App.actions.duplicateTask(taskId) },
+      'divider',
+      { label: 'Arquivar', icon: 'archive', onClick: () => App.actions.archiveTask(taskId) },
+      { label: 'Excluir', icon: 'trash', danger: true, onClick: () => App.actions.deleteTask(taskId) },
+    ]);
+  }
+
   function mount(element) {
     root = element;
     root.classList.add('view--board');
     quickAddColumnId = null;
 
     root.addEventListener('click', onClick);
+    root.addEventListener('contextmenu', (event) => {
+      const card = event.target.closest('.card[data-task-id]');
+      if (!card) return;
+      event.preventDefault();
+      openCardMenu(card, card.dataset.taskId);
+    });
     root.addEventListener('dblclick', (event) => {
       const title = event.target.closest('.column__title');
       if (title) startRenameColumn(title);

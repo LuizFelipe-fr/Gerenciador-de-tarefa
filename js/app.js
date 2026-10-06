@@ -23,6 +23,8 @@
     const resolved = theme === 'system' ? (darkQuery.matches ? 'dark' : 'light') : theme;
     document.documentElement.dataset.theme = resolved;
     document.documentElement.style.colorScheme = resolved;
+    const themeColor = document.getElementById('theme-color-meta');
+    if (themeColor) themeColor.setAttribute('content', resolved === 'dark' ? '#0e1117' : '#f4f5f8');
   }
 
   /* ---------- Menu lateral ---------- */

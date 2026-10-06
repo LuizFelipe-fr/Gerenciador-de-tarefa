@@ -27,6 +27,7 @@ comentários, histórico de atividades, painel de indicadores, filtros, backup e
 - **Checklist** com barra de progresso e reordenação de itens
 - **Comentários** (links viram clicáveis) e **histórico** de alterações por tarefa
 - Duplicar, arquivar, restaurar e excluir — com opção de **Desfazer**
+- **Menu de contexto** (clique direito no cartão) com as ações rápidas: abrir, concluir, duplicar, arquivar e excluir
 
 ### Visualizações
 - **Quadro** — Kanban clássico
