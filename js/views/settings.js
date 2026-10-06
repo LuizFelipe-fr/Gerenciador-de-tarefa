@@ -1,6 +1,3 @@
-/**
- * Configurações gerais: aparência, equipe, dados (backup) e atalhos.
- */
 (function (App) {
   'use strict';
 

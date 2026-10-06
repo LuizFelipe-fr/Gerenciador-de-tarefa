@@ -1,7 +1,4 @@
-/* ==========================================================================
-   Design tokens — cores, tipografia, espaçamentos, sombras e raios.
-   O tema escuro redefine apenas as variáveis; os componentes não mudam.
-   ========================================================================== */
+/* Tokens de design. O tema escuro só redefine as variáveis. */
 
 :root {
   /* Tipografia */

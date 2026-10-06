@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Quadro Kanban — colunas, cartões, criação rápida e arrastar e soltar.
-   ========================================================================== */
+/* Quadro Kanban: colunas, cartões, criação rápida e arrastar e soltar. */
 
 .board {
   display: flex;

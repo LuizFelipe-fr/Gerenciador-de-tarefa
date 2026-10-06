@@ -1,6 +1,3 @@
-/**
- * Configurações do quadro: dados gerais, etiquetas e tarefas arquivadas.
- */
 (function (App) {
   'use strict';
 

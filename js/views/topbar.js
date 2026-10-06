@@ -1,6 +1,3 @@
-/**
- * Barra superior: título do quadro, ações, troca de visualização, busca e filtros.
- */
 (function (App) {
   'use strict';
 

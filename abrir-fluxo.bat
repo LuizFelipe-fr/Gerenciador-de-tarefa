@@ -1,8 +1,5 @@
 @echo off
-REM ============================================================
-REM  Fluxo - Gerenciador de Tarefas
-REM  Abre o app no navegador padrao. E so dar dois cliques.
-REM ============================================================
+REM Abre o Fluxo no navegador padrao. E so dar dois cliques.
 
 cd /d "%~dp0"
 

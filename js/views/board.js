@@ -1,11 +1,3 @@
-/**
- * Visualização em quadro (Kanban).
- *
- * - Arrastar e soltar tarefas entre colunas e reordenar colunas (HTML5 DnD).
- * - Criação rápida de tarefas no rodapé de cada coluna.
- * - Navegação e movimentação pelo teclado (Alt + setas).
- * - Animação FLIP ao reposicionar os cartões após cada renderização.
- */
 (function (App) {
   'use strict';
 
@@ -20,9 +12,7 @@
   let placeholder = null;    // elemento que indica onde a tarefa vai cair
   let focusAfterRender = null;
 
-  /* =========================================================
-   * Renderização
-   * ========================================================= */
+  // Renderização
 
   function renderCard(task, board) {
     const labels = task.labelIds.map((id) => board.labels.find((label) => label.id === id)).filter(Boolean);
@@ -158,9 +148,7 @@
     }
   }
 
-  /* =========================================================
-   * Animação FLIP
-   * ========================================================= */
+  // Animação FLIP (anima os cartões ao reposicionar após cada render)
 
   function measureCards() {
     const rects = new Map();
@@ -188,9 +176,7 @@
     });
   }
 
-  /* =========================================================
-   * Criação rápida
-   * ========================================================= */
+  // Criação rápida
 
   function openQuickAdd(columnId) {
     quickAddColumnId = columnId;
@@ -220,9 +206,7 @@
     if (body) body.scrollTop = body.scrollHeight;
   }
 
-  /* =========================================================
-   * Renomear coluna inline
-   * ========================================================= */
+  // Renomear coluna inline
 
   function startRenameColumn(titleEl) {
     const columnId = titleEl.closest('[data-column-id]').dataset.columnId;
@@ -253,9 +237,7 @@
     input.addEventListener('blur', () => finish(true));
   }
 
-  /* =========================================================
-   * Arrastar e soltar
-   * ========================================================= */
+  // Arrastar e soltar
 
   function getPlaceholder(height) {
     if (!placeholder) {
@@ -398,9 +380,7 @@
     }
   }
 
-  /* =========================================================
-   * Teclado
-   * ========================================================= */
+  // Teclado
 
   function onKeyDown(event) {
     const card = event.target.closest('.card[data-task-id]');
@@ -477,9 +457,7 @@
     if (target) target.focus();
   }
 
-  /* =========================================================
-   * Cliques
-   * ========================================================= */
+  // Cliques
 
   function onClick(event) {
     const actionEl = event.target.closest('[data-action]');

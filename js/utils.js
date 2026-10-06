@@ -1,6 +1,3 @@
-/**
- * Funções utilitárias puras (sem dependência do estado da aplicação).
- */
 (function (App) {
   'use strict';
 

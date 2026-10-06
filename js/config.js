@@ -1,9 +1,3 @@
-/**
- * Configurações e constantes globais da aplicação.
- *
- * Todos os módulos são registrados no namespace global `App`, o que permite
- * abrir o projeto direto pelo `index.html` (sem servidor e sem build).
- */
 window.App = window.App || {};
 
 (function (App) {

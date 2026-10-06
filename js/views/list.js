@@ -1,6 +1,3 @@
-/**
- * Visualização em lista (tabela ordenável).
- */
 (function (App) {
   'use strict';
 

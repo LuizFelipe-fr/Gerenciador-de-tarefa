@@ -1,6 +1,3 @@
-/**
- * Atalhos de teclado globais (lista completa em App.config.SHORTCUTS).
- */
 (function (App) {
   'use strict';
 

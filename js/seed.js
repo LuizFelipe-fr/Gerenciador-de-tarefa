@@ -1,7 +1,3 @@
-/**
- * Dados iniciais: um quadro de exemplo para quem abre o app pela primeira vez.
- * O usuário pode excluí-lo ou restaurar um estado vazio em Configurações > Dados.
- */
 (function (App) {
   'use strict';
 

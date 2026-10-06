@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Layout — estrutura da aplicação, menu lateral e barra superior.
-   ========================================================================== */
+/* Estrutura da aplicação, menu lateral e barra superior. */
 
 .app {
   display: flex;

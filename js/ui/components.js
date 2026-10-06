@@ -1,7 +1,3 @@
-/**
- * Pequenos componentes de interface que retornam HTML (string).
- * Todo texto vindo do usuário passa por `escapeHtml`.
- */
 (function (App) {
   'use strict';
 

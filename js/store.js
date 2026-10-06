@@ -1,24 +1,3 @@
-/**
- * Store central da aplicação.
- *
- * - Guarda o estado (quadros, colunas, tarefas, membros e preferências).
- * - Expõe "ações" que são a ÚNICA forma de alterar o estado.
- * - Após cada ação, salva no localStorage e notifica os assinantes para
- *   que as telas sejam renderizadas novamente.
- *
- * Formato do estado:
- * {
- *   version, settings: { theme, view, activeBoardId, currentUserId, sidebarCollapsed },
- *   members: [{ id, name, role, color }],
- *   boards: [{
- *     id, name, description, color, nextNumber, createdAt, updatedAt,
- *     columns: [{ id, name, color, wipLimit, isDone, taskIds: [] }],
- *     labels: [{ id, name, color }],
- *     tasks: { [id]: Task },
- *     activity: [{ id, at, userId, taskId, text }]
- *   }]
- * }
- */
 (function (App) {
   'use strict';
 
@@ -38,10 +17,7 @@
     }
   }, SAVE_DELAY);
 
-  /* =========================================================
-   * Normalização (garante um estado válido mesmo com dados
-   * antigos, incompletos ou importados de um arquivo)
-   * ========================================================= */
+  // Normalização: mantém um estado válido mesmo com dados antigos ou importados.
 
   function color(value, fallback = COLORS[0].value) {
     return isValidColor(value) ? value : fallback;
@@ -189,10 +165,6 @@
     };
   }
 
-  /* =========================================================
-   * Núcleo
-   * ========================================================= */
-
   function emit(event) {
     listeners.forEach((listener) => listener(event));
   }
@@ -228,9 +200,7 @@
     persist.flush();
   }
 
-  /* =========================================================
-   * Seletores
-   * ========================================================= */
+  // Seletores
 
   function getState() {
     return state;
@@ -260,10 +230,6 @@
   function getCurrentUser() {
     return getMember(state.settings.currentUserId);
   }
-
-  /* =========================================================
-   * Helpers internos
-   * ========================================================= */
 
   function findColumn(board, columnId) {
     return board.columns.find((column) => column.id === columnId) || null;
@@ -295,9 +261,7 @@
     return callback(board, task);
   }
 
-  /* =========================================================
-   * Ações — preferências
-   * ========================================================= */
+  // Preferências
 
   function updateSettings(patch) {
     const allowed = {};
@@ -311,9 +275,7 @@
     commit('settings:update', { patch: allowed });
   }
 
-  /* =========================================================
-   * Ações — quadros
-   * ========================================================= */
+  // Quadros
 
   function createBoard({ name, description = '', color: boardColor, templateId = 'basic', withDefaultLabels = true }) {
     const template = TEMPLATES.find((item) => item.id === templateId) || TEMPLATES[0];
@@ -405,9 +367,7 @@
     commit('board:move', { boardId });
   }
 
-  /* =========================================================
-   * Ações — colunas
-   * ========================================================= */
+  // Colunas
 
   function addColumn(name, options = {}) {
     const board = getActiveBoard();
@@ -465,10 +425,7 @@
     commit('column:move', { columnId });
   }
 
-  /**
-   * Remove uma coluna. Se `moveToColumnId` for informado, as tarefas são
-   * transferidas para ela; caso contrário, são excluídas junto.
-   */
+  // Com moveToColumnId, as tarefas vão para outra coluna; sem ele, são excluídas junto.
   function deleteColumn(columnId, moveToColumnId = null) {
     const board = getActiveBoard();
     if (!board || board.columns.length <= 1) return false;
@@ -516,9 +473,7 @@
     return count;
   }
 
-  /* =========================================================
-   * Ações — etiquetas
-   * ========================================================= */
+  // Etiquetas
 
   function addLabel(name, labelColor) {
     const board = getActiveBoard();
@@ -551,9 +506,7 @@
     commit('label:delete', { labelId });
   }
 
-  /* =========================================================
-   * Ações — membros da equipe
-   * ========================================================= */
+  // Membros da equipe
 
   function addMember({ name, role = '', color: memberColor }) {
     if (!name || !name.trim()) return null;
@@ -586,9 +539,7 @@
     commit('member:delete', { memberId });
   }
 
-  /* =========================================================
-   * Ações — tarefas
-   * ========================================================= */
+  // Tarefas
 
   function createTask(columnId, data = {}) {
     const board = getActiveBoard();
@@ -672,10 +623,7 @@
     });
   }
 
-  /**
-   * Move uma tarefa para `toColumnId`, antes da tarefa `beforeTaskId`
-   * (ou no final da coluna, se `beforeTaskId` for nulo).
-   */
+  // beforeTaskId nulo = joga a tarefa no fim da coluna.
   function moveTask(taskId, toColumnId, beforeTaskId = null) {
     return withTask(taskId, (board, task) => {
       const from = findColumn(board, task.columnId);
@@ -826,9 +774,7 @@
     });
   }
 
-  /* =========================================================
-   * Dados: backup, importação e desfazer
-   * ========================================================= */
+  // Backup, importação e reset
 
   function snapshot() {
     return JSON.stringify(state);

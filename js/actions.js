@@ -1,9 +1,3 @@
-/**
- * Ações de alto nível disparadas pela interface.
- *
- * Combinam o store com confirmações, notificações e "desfazer", para que as
- * telas fiquem simples e o mesmo comportamento seja reaproveitado em todo lugar.
- */
 (function (App) {
   'use strict';
 

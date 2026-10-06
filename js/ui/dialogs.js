@@ -1,9 +1,3 @@
-/**
- * Diálogos baseados em Promise, substitutos elegantes de confirm() e prompt().
- *
- * if (await App.dialogs.confirm({ title: 'Excluir?', danger: true })) { ... }
- * const nome = await App.dialogs.prompt({ title: 'Renomear', value: 'Atual' });
- */
 (function (App) {
   'use strict';
 

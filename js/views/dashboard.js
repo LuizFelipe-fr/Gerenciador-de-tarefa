@@ -1,9 +1,3 @@
-/**
- * Painel de indicadores do quadro: KPIs, distribuição, carga da equipe,
- * tendência de entregas, próximos prazos e atividade recente.
- *
- * Os gráficos são HTML/CSS puros (sem bibliotecas) e respeitam os filtros ativos.
- */
 (function (App) {
   'use strict';
 

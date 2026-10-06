@@ -36,8 +36,7 @@
       } catch (error) {
         theme = 'light';
       }
-      // Define o tema, o esquema de cores (barras de rolagem/controles nativos) e a cor
-      // da barra do navegador no celular já na primeira pintura.
+      // Aplica tema, esquema de cores e cor da barra do navegador já na 1ª pintura.
       document.documentElement.dataset.theme = theme;
       document.documentElement.style.colorScheme = theme;
       var meta = document.getElementById('theme-color-meta');

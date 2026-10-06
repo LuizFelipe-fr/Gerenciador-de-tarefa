@@ -1,7 +1,3 @@
-/**
- * Regras de negócio sobre tarefas: prioridade, prazos, progresso,
- * filtragem e ordenação. Funções puras, reutilizadas por todas as telas.
- */
 (function (App) {
   'use strict';
 
@@ -38,9 +34,7 @@
 
   /* ---------- Prazos ---------- */
 
-  /**
-   * @returns {'done'|'overdue'|'today'|'soon'|'future'|null}
-   */
+  // Retorna: 'done' | 'overdue' | 'today' | 'soon' | 'future' | null.
   function getDueStatus(task, board) {
     if (!task.dueDate) return null;
     if (isTaskDone(task, board)) return 'done';

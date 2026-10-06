@@ -1,9 +1,3 @@
-/**
- * Ponto de entrada da aplicação.
- *
- * Responsável por: iniciar o store, montar o layout, aplicar o tema,
- * renderizar a visualização ativa e reagir às mudanças de estado.
- */
 (function (App) {
   'use strict';
 

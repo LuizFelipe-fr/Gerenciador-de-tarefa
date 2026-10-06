@@ -1,13 +1,3 @@
-/**
- * Popovers ancorados em um elemento (menus de contexto, filtros, seletores).
- * Apenas um popover fica aberto por vez.
- *
- * App.popover.menu(botao, [
- *   { label: 'Renomear', icon: 'edit', onClick: () => {} },
- *   'divider',
- *   { label: 'Excluir', icon: 'trash', danger: true, onClick: () => {} },
- * ]);
- */
 (function (App) {
   'use strict';
 

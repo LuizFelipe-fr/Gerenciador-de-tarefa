@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Modais — estrutura, janela de tarefa e telas de configurações.
-   ========================================================================== */
+/* Modais: estrutura, janela de tarefa e telas de configurações. */
 
 .modal-backdrop {
   position: fixed;

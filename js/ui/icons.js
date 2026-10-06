@@ -1,7 +1,3 @@
-/**
- * Ícones SVG inline (traço no estilo Lucide), sem dependências externas.
- * Uso: App.icon('plus') -> string HTML do <svg>.
- */
 (function (App) {
   'use strict';
 

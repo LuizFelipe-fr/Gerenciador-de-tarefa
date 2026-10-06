@@ -1,10 +1,3 @@
-/**
- * Janelas modais acessíveis (pilha de modais, foco preso, Esc para fechar).
- *
- * const modal = App.modal.open({ title, content, size: 'md' | 'lg' | 'sm', footer, onClose });
- * modal.body   -> elemento com o conteúdo
- * modal.close()
- */
 (function (App) {
   'use strict';
 

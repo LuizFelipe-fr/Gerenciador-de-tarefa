@@ -1,8 +1,3 @@
-/**
- * Notificações temporárias (toasts), com suporte a botão de ação (ex.: "Desfazer").
- *
- * App.toast.show('Tarefa excluída', { type: 'success', action: { label: 'Desfazer', onClick } })
- */
 (function (App) {
   'use strict';
 

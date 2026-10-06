@@ -1,6 +1,3 @@
-/**
- * Menu lateral: marca, lista de quadros, usuário atual e atalhos globais.
- */
 (function (App) {
   'use strict';
 

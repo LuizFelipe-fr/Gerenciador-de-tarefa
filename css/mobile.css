@@ -1,10 +1,4 @@
-/* ==========================================================================
-   Refinamentos para celular e telas de toque.
-   - Respeita as áreas seguras (notch / barra inferior do iPhone).
-   - Alvos de toque maiores e resposta mais rápida ao toque.
-   - Folha inferior (bottom sheet) com "pegador", à moda dos apps nativos.
-   Carregado por último para apenas refinar os estilos já existentes.
-   ========================================================================== */
+/* Ajustes de celular e toque: áreas seguras, alvos maiores e folha inferior. */
 
 /* Sem flash azul ao tocar; sem auto-ajuste de fonte ao girar a tela. */
 html {

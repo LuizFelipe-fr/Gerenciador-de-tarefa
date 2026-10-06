@@ -1,9 +1,3 @@
-/**
- * Janela de tarefa:
- * - `open(taskId)`: detalhes completos com edição (descrição, checklist,
- *   comentários, histórico, responsáveis, etiquetas, prazo, status...).
- * - `openCreate(columnId)`: formulário de criação de tarefa.
- */
 (function (App) {
   'use strict';
 
@@ -16,9 +10,7 @@
 
   let current = null; // { modal, taskId, tab }
 
-  /* =========================================================
-   * Detalhes da tarefa
-   * ========================================================= */
+  // Detalhes da tarefa
 
   function renderLayout(task, board) {
     return `
@@ -418,9 +410,7 @@
     modal.body.querySelectorAll('textarea').forEach(autoGrow);
   }
 
-  /* =========================================================
-   * Criação de tarefa
-   * ========================================================= */
+  // Criação de tarefa
 
   function openCreate(columnId = null, defaults = {}) {
     const board = store.getActiveBoard();

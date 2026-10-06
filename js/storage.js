@@ -1,9 +1,3 @@
-/**
- * Camada de persistência (localStorage).
- *
- * Isolada do restante da aplicação para que, no futuro, seja simples trocar
- * por uma API/back-end sem mexer nas telas.
- */
 (function (App) {
   'use strict';
 

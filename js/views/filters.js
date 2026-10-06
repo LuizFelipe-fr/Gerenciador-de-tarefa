@@ -1,7 +1,3 @@
-/**
- * Estado de busca/filtros da sessão (não é salvo — reinicia ao trocar de quadro)
- * e o popover de filtros exibido na barra superior.
- */
 (function (App) {
   'use strict';
 
