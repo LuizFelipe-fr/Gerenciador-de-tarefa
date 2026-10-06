@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Refinamentos para celular e telas de toque.
+   - Respeita as áreas seguras (notch / barra inferior do iPhone).
+   - Alvos de toque maiores e resposta mais rápida ao toque.
+   - Folha inferior (bottom sheet) com "pegador", à moda dos apps nativos.
+   Carregado por último para apenas refinar os estilos já existentes.
+   ========================================================================== */
+
+/* Sem flash azul ao tocar; sem auto-ajuste de fonte ao girar a tela. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove o atraso de ~300ms no toque e evita zoom por toque duplo nos controles. */
+button,
+.btn,
+.icon-btn,
+.link-btn,
+.segmented__item,
+.tabs__item,
+.board-nav__item,
+.menu__item,
+.picker-chip,
+.card__check,
+a,
+label,
+select {
+  touch-action: manipulation;
+}
+
+/* ---------- Áreas seguras (iPhone com notch / barra de gestos) ---------- */
+
+@media (max-width: 640px) {
+  .topbar {
+    padding-top: max(var(--space-3), env(safe-area-inset-top));
+    padding-left: max(var(--space-4), env(safe-area-inset-left));
+    padding-right: max(var(--space-4), env(safe-area-inset-right));
+  }
+
+  .board {
+    padding-left: max(var(--space-4), env(safe-area-inset-left));
+    padding-right: max(var(--space-4), env(safe-area-inset-right));
+    padding-bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  }
+
+  .list-view,
+  .dashboard {
+    padding-left: max(var(--space-4), env(safe-area-inset-left));
+    padding-right: max(var(--space-4), env(safe-area-inset-right));
+    padding-bottom: max(var(--space-6), calc(env(safe-area-inset-bottom) + var(--space-4)));
+  }
+
+  .sidebar {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Toast ocupa a largura da tela e fica acima da barra de gestos. */
+  .toast-root {
+    left: max(var(--space-4), env(safe-area-inset-left));
+    right: max(var(--space-4), env(safe-area-inset-right));
+    bottom: max(var(--space-4), calc(env(safe-area-inset-bottom) + var(--space-2)));
+    align-items: stretch;
+  }
+
+  .toast {
+    width: 100%;
+  }
+}
+
+/* ---------- Alvos de toque mais generosos em telas de toque ---------- */
+
+@media (pointer: coarse) {
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon-btn--sm {
+    width: 34px;
+    height: 34px;
+  }
+
+  .icon-btn--xs {
+    width: 30px;
+    height: 30px;
+  }
+
+  .card__check {
+    width: 22px;
+    height: 22px;
+  }
+
+  .segmented__item {
+    height: 36px;
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ---------- Folha inferior (bottom sheet) no celular ---------- */
+
+@media (max-width: 760px) {
+  /* "Pegador" visual no topo da folha, como nos apps nativos. */
+  .modal__header {
+    position: relative;
+    padding-top: var(--space-5);
+  }
+
+  .modal__header::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 38px;
+    height: 4px;
+    background: var(--border-strong);
+    border-radius: var(--radius-full);
+    transform: translateX(-50%);
+  }
+
+  /* Rodapé do modal respeitando a barra inferior do sistema. */
+  .modal__footer {
+    padding-bottom: max(var(--space-4), calc(env(safe-area-inset-bottom) + var(--space-3)));
+  }
+
+  /* Botões do rodapé ocupam a largura toda, mais fáceis de tocar. */
+  .modal__footer .btn {
+    flex: 1;
+  }
+}
